@@ -1,7 +1,8 @@
-go run reorder_names.go John Smith VN
+`go run reorder_names.go John Smith VN`
 
-Output: Smith John
+Output: `Smith John`
 
-go run reorder_names.go Emily Rose Watson US
 
-Output: Emily Watson Rose
+`go run reorder_names.go Emily Rose Watson US`
+
+Output: `Emily Watson Rose`
