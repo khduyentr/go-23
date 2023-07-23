@@ -13,7 +13,6 @@ func ConvertArrayToInt64(array []string) (result []int64) {
 
 		if err != nil {
 			panic(err)
-			//return nil
 		}
 
 		result = append(result, n)

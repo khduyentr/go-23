@@ -17,11 +17,12 @@ var floatSortCommand = &cobra.Command{
 		var array []float64 = helper.ConvertArrayToFloat64(args)
 
 		fmt.Print("Output: ")
-		algo.SelectionSort(array)
+		algo.SelectionSort(array, isDescending)
 		fmt.Println()
 	},
 }
 
 func init() {
+	floatSortCommand.Flags().BoolVarP(&isDescending, "descending", "d", false, "Sort in descending order")
 	rootCommand.AddCommand(floatSortCommand)
 }

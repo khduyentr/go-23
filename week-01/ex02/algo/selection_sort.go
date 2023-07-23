@@ -7,23 +7,37 @@ import (
 	"github.com/khduyentr/go-23/w01/ex02/helper"
 )
 
-func SelectionSort[Type helper.AvailableType](array []Type) {
+func SelectionSort[Type helper.AvailableType](array []Type, isDescending bool) {
 	arrayLen := len(array)
-	for i := 0; i < arrayLen-1; i++ {
-		minIndex := i
-		for j := i + 1; j < arrayLen; j++ {
-			if array[j] < array[minIndex] {
-				minIndex = j
-			}
-		}
 
-		array[i], array[minIndex] = array[minIndex], array[i]
+	if !isDescending {
+		for i := 0; i < arrayLen-1; i++ {
+			minIndex := i
+			for j := i + 1; j < arrayLen; j++ {
+				if array[j] < array[minIndex] {
+					minIndex = j
+				}
+			}
+
+			array[i], array[minIndex] = array[minIndex], array[i]
+		}
+	} else {
+		for i := 0; i < arrayLen-1; i++ {
+			maxIndex := i
+			for j := i + 1; j < arrayLen; j++ {
+				if array[j] > array[maxIndex] {
+					maxIndex = j
+				}
+			}
+
+			array[i], array[maxIndex] = array[maxIndex], array[i]
+		}
 	}
 
 	helper.PrintArray(array)
 }
 
-func MixSelectionSort(array []interface{}) {
+func MixSelectionSort(array []interface{}, isDescending bool) {
 	arrayLen := len(array)
 
 	floatArray := []float64{}
@@ -44,7 +58,11 @@ func MixSelectionSort(array []interface{}) {
 		}
 	}
 
-	SelectionSort(floatArray)
-	SelectionSort(stringArray)
-
+	if !isDescending {
+		SelectionSort(floatArray, isDescending)
+		SelectionSort(stringArray, isDescending)
+	} else {
+		SelectionSort(stringArray, isDescending)
+		SelectionSort(floatArray, isDescending)
+	}
 }

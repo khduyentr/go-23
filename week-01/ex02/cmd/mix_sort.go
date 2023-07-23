@@ -17,11 +17,12 @@ var mixSortCommand = &cobra.Command{
 		var array []interface{} = helper.ConvertArrayToExactType(args)
 
 		fmt.Print("Output: ")
-		algo.MixSelectionSort(array)
+		algo.MixSelectionSort(array, isDescending)
 		fmt.Println()
 	},
 }
 
 func init() {
+	mixSortCommand.Flags().BoolVarP(&isDescending, "descending", "d", false, "Sort in descending order")
 	rootCommand.AddCommand(mixSortCommand)
 }

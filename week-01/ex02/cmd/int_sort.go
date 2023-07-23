@@ -8,6 +8,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var isDescending bool
 var intSortCommand = &cobra.Command{
 	Use:     "integer",
 	Aliases: []string{"int"},
@@ -17,11 +18,12 @@ var intSortCommand = &cobra.Command{
 		var array []int64 = helper.ConvertArrayToInt64(args)
 
 		fmt.Print("Output: ")
-		algo.SelectionSort(array)
+		algo.SelectionSort(array, isDescending)
 		fmt.Println()
 	},
 }
 
 func init() {
+	intSortCommand.Flags().BoolVarP(&isDescending, "descending", "d", false, "Sort in descending order")
 	rootCommand.AddCommand(intSortCommand)
 }

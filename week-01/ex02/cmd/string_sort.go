@@ -14,11 +14,12 @@ var stringSortCommand = &cobra.Command{
 	Args:    cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Print("Output: ")
-		algo.SelectionSort(args)
+		algo.SelectionSort(args, isDescending)
 		fmt.Println()
 	},
 }
 
 func init() {
+	stringSortCommand.Flags().BoolVarP(&isDescending, "descending", "d", false, "Sort in descending order")
 	rootCommand.AddCommand(stringSortCommand)
 }
