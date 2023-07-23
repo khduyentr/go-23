@@ -20,7 +20,7 @@ func SelectionSort[Type helper.AvailableType](array []Type) {
 		array[i], array[minIndex] = array[minIndex], array[i]
 	}
 
-	helper.PrintResult(array)
+	helper.PrintArray(array)
 }
 
 func MixSelectionSort(array []interface{}) {

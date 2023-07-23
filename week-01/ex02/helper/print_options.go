@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func PrintResult[Type AvailableType](array []Type) {
+func PrintArray[Type AvailableType](array []Type) {
 	arrayLen := len(array)
 
 	for i := 0; i < arrayLen; i++ {
