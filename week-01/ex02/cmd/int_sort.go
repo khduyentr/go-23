@@ -8,7 +8,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var isDescending bool
 var intSortCommand = &cobra.Command{
 	Use:     "integer",
 	Aliases: []string{"int"},
@@ -20,6 +19,10 @@ var intSortCommand = &cobra.Command{
 		fmt.Print("Output: ")
 		algo.SelectionSort(array, isDescending)
 		fmt.Println()
+
+		// fmt.Print("[IS] Output: ")
+		// algo.InsertionSort(array, isDescending)
+		// fmt.Println()
 	},
 }
 

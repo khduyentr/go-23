@@ -1,6 +1,8 @@
 package helper
 
 import (
+	"fmt"
+	"reflect"
 	"strconv"
 )
 
@@ -56,4 +58,28 @@ func ConvertArrayToExactType(array []string) (result []interface{}) {
 	}
 
 	return result
+}
+
+func ClassifyArrayBasedOnType(array []interface{}) (floatArray []float64, stringArray []string) {
+
+	arrayLen := len(array)
+
+	for i := 0; i < arrayLen; i++ {
+		switch dataType := reflect.TypeOf(array[i]).String(); dataType {
+		case "int":
+			floatArray = append(floatArray, float64(array[i].(int)))
+		case "int64":
+			floatArray = append(floatArray, float64(array[i].(int64)))
+		case "float64":
+			floatArray = append(floatArray, array[i].(float64))
+		case "string":
+			stringArray = append(stringArray, array[i].(string))
+		default:
+			fmt.Println("This value is not expected: ", dataType)
+
+			return nil, nil
+		}
+	}
+
+	return floatArray, stringArray
 }

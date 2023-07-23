@@ -8,6 +8,10 @@ import (
 )
 
 var version = "1.0.0"
+
+var isDescending bool
+var algoName string
+
 var rootCommand = &cobra.Command{
 	Use:     "CLI Sort Algorithms",
 	Version: version,

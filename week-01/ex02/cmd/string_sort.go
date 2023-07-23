@@ -16,6 +16,10 @@ var stringSortCommand = &cobra.Command{
 		fmt.Print("Output: ")
 		algo.SelectionSort(args, isDescending)
 		fmt.Println()
+
+		// fmt.Print("[IS] Output: ")
+		// algo.InsertionSort(args, isDescending)
+		// fmt.Println()
 	},
 }
 

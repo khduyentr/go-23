@@ -19,6 +19,10 @@ var mixSortCommand = &cobra.Command{
 		fmt.Print("Output: ")
 		algo.MixSelectionSort(array, isDescending)
 		fmt.Println()
+
+		// fmt.Print("[IS]Output: ")
+		// algo.MixInsertionSort(array, isDescending)
+		// fmt.Println()
 	},
 }
 
