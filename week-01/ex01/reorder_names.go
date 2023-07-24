@@ -6,53 +6,66 @@ import (
 	"strings"
 )
 
-func isUppercase(value string) bool {
-	return strings.ToUpper(value) == value
-}
-
 func main() {
 
-	var sb strings.Builder
+	// 0: file_name
+	// 1: first_name
+	// 2: last_name
+	// from 3 -> n - 2 -> middle name
+	// n - 1: country code
 
-	var first_name string = os.Args[1]
-	var last_name string = os.Args[2]
+	var builder strings.Builder
+	var middleNameBuilder strings.Builder
 
-	var middle_name string = ""
-	var country_code string = ""
-	var result string = ""
+	argsLen := len(os.Args)
 
-	if !isUppercase(os.Args[3]) {
-		middle_name = os.Args[3]
-		country_code = os.Args[4]
-	} else {
-		country_code = os.Args[3]
+	if argsLen < 4 {
+		// fmt.Println("Not enough arguments")
+		os.Exit(1)
 	}
 
-	switch country_code {
+	// not used the first argument
+	firstName := os.Args[1]
+	lastName := os.Args[2]
+
+	countryCode := os.Args[argsLen-1]
+
+	for i := 3; i < argsLen-1; i++ {
+		middleNameBuilder.WriteString(os.Args[i])
+		middleNameBuilder.WriteString(" ")
+	}
+
+	middleName := middleNameBuilder.String()
+
+	switch countryCode {
 	case "VN", "JP", "CN", "KR", "KH":
 
-		sb.WriteString(last_name)
+		builder.WriteString(lastName)
 
-		if middle_name != "" {
-			sb.WriteString(" ")
-			sb.WriteString(middle_name)
+		if middleName != "" {
+			builder.WriteString(" ")
+			builder.WriteString(middleName)
+		} else {
+			builder.WriteString(" ")
 		}
 
-		sb.WriteString(" ")
-		sb.WriteString(first_name)
+		builder.WriteString(firstName)
 	case "US", "UK", "AU", "FR":
-	default:
-		sb.WriteString(first_name)
+		builder.WriteString(firstName)
 
-		if middle_name != "" {
-			sb.WriteString(" ")
-			sb.WriteString(middle_name)
+		if middleName != "" {
+			builder.WriteString(" ")
+			builder.WriteString(middleName)
+		} else {
+			builder.WriteString(" ")
 		}
 
-		sb.WriteString(" ")
-		sb.WriteString(last_name)
+		builder.WriteString(lastName)
+	default:
+		builder.WriteString("This country code is not registered")
 	}
 
-	result = sb.String()
+	result := builder.String()
 	fmt.Println(result)
+
 }
