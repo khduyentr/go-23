@@ -2,6 +2,7 @@ package helper
 
 import (
 	"fmt"
+	"os"
 	"reflect"
 	"strconv"
 )
@@ -14,7 +15,8 @@ func ConvertArrayToInt64(array []string) (result []int64) {
 		n, err := strconv.ParseInt(str, 10, 64)
 
 		if err != nil {
-			panic(err)
+			fmt.Println("Invalid datatype")
+			os.Exit(1)
 		}
 
 		result = append(result, n)
@@ -31,8 +33,8 @@ func ConvertArrayToFloat64(array []string) (result []float64) {
 		n, err := strconv.ParseFloat(str, 64)
 
 		if err != nil {
-			panic(err)
-			// return nil
+			fmt.Println("Invalid datatype")
+			os.Exit(1)
 		}
 
 		result = append(result, n)
