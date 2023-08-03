@@ -6,18 +6,11 @@ import (
 	"strings"
 )
 
-func main() {
-
-	// 0: file_name
-	// 1: first_name
-	// 2: last_name
-	// from 3 -> n - 2 -> middle name
-	// n - 1: country code
-
+func ReorderNames(data []string) string {
 	var builder strings.Builder
 	var middleNameBuilder strings.Builder
 
-	argsLen := len(os.Args)
+	argsLen := len(data)
 
 	if argsLen < 4 {
 		// fmt.Println("Not enough arguments")
@@ -25,13 +18,13 @@ func main() {
 	}
 
 	// not used the first argument
-	firstName := os.Args[1]
-	lastName := os.Args[2]
+	firstName := data[1]
+	lastName := data[2]
 
-	countryCode := os.Args[argsLen-1]
+	countryCode := data[argsLen-1]
 
 	for i := 3; i < argsLen-1; i++ {
-		middleNameBuilder.WriteString(os.Args[i])
+		middleNameBuilder.WriteString(data[i])
 		middleNameBuilder.WriteString(" ")
 	}
 
@@ -66,6 +59,16 @@ func main() {
 	}
 
 	result := builder.String()
+
+	return result
+}
+
+func main() {
+
+	data := []string{"_", "Emily", "Rose", "Watson", "US"}
+	// result := reorderNames(os.Args)
+	result := ReorderNames(data)
+	fmt.Println(data)
 	fmt.Println(result)
 
 }

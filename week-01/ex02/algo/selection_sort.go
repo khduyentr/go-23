@@ -4,7 +4,7 @@ import (
 	"github.com/khduyentr/go-23/w01/ex02/helper"
 )
 
-func SelectionSort[Type helper.AvailableType](array []Type) {
+func SelectionSort[Type helper.AvailableType](array []Type) []Type {
 	arrayLen := len(array)
 
 	for i := 0; i < arrayLen-1; i++ {
@@ -19,6 +19,8 @@ func SelectionSort[Type helper.AvailableType](array []Type) {
 	}
 
 	helper.PrintArray(array)
+
+	return array
 }
 
 func MixSelectionSort(array []interface{}) {
