@@ -8,4 +8,4 @@ Output: Cong Tang Ton Nu Ta Thi Bach Loan
 
 `go run reorder_names.go Emily Rose Watson US`
 
-Output: `Emily Watson Rose
+Output: `Emily Watson Rose`
